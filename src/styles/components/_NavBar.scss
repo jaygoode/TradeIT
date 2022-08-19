@@ -1,0 +1,22 @@
+@import "../variables/colors";
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    background-color: $primary-clr;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    // justify-content: center;
+    font-size: x-large;
+    .link{
+        text-decoration: none;
+        color: $secondary-clr
+    }
+    .theme-btn{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        color: orange;
+    }
+}

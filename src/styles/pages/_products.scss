@@ -1,0 +1,44 @@
+.products-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sorting-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  // min-height: 100vh;
+  padding-top: 5rem;
+  
+  Select{
+    width:200px;
+  }
+}
+
+.product-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  width: 100vw;
+  margin:2em;
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-width: 20em;
+  }
+ 
+}
+
+.bottom-buttons {
+  margin: 1em;
+}
+
+#sorting-select{
+  background-color: white;
+}

@@ -1,0 +1,27 @@
+.profile-page{
+    padding-top: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+
+    
+    .profile-card{
+        padding: 1em;
+        display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    img{width:200px}
+    
+    h3{
+        font-size: 3em;
+    }
+    Button{
+        margin:0.5em;
+    }
+}
+}
