@@ -34,7 +34,7 @@ const Cart = () => {
     dispatch(increaseProductAmount(product));
   };
 
-  const decreaseHandler = (product: ProductsInCart) => {
+  const decreaseHandler = (product: any) => {
     console.log(product.quantity);
     if (product.quantity > 1) {
       dispatch(decreaseProductAmount(product));
@@ -43,62 +43,74 @@ const Cart = () => {
     }
   };
 
+  const CartItemCards = (props: any) => {
+    return (
+      <>
+        <Card key={props.id} className="product">
+          <CardMedia
+            onClick={() => navigate(`${props.id}`)}
+            height="200"
+            component="img"
+            image={props.image}
+            alt=""
+          />
+          <CardContent>
+            <Typography>{props.title}</Typography>
+            <Typography>${props.price}</Typography>
+            <Typography>{props.category}</Typography>
+          </CardContent>
+          <CardActions>
+            <Fab
+              size="small"
+              color="primary"
+              aria-label="increase"
+              onClick={() => increaseHandler(props.product)}
+            >
+              <AddIcon />
+            </Fab>
+            <Typography variant="h6" component="h2">
+              {props.quantity}
+            </Typography>
+            <Fab
+              size="small"
+              color="secondary"
+              aria-label="decrease"
+              onClick={() => decreaseHandler(props.product)}
+            >
+              <RemoveIcon />
+            </Fab>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => onDelete(props.product)}
+            >
+              Remove
+            </Button>
+          </CardActions>
+        </Card>
+      </>
+    );
+  };
+
   return (
     <div className="cart-page">
       <div className="cart-card">
         <CardContent>
           <div className="product-section">
-            {/* {products.length > 0 ? ({
+            {products && products.length > 1 ? (
               products.map((product) => (
-                <Card key={product.id} className="product">
-                  <CardMedia
-                    onClick={() => navigate(`${product.id}`)}
-                    height="200"
-                    component="img"
-                    image={product.images[0]}
-                    alt=""
-                  />
-                  <CardContent>
-                    <Typography>{product.title}</Typography>
-                    <Typography>${product.price}</Typography>
-                    <Typography>{product.category.name}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Fab
-                      size="small"
-                      color="primary"
-                      aria-label="increase"
-                      onClick={() => increaseHandler(product)}
-                    >
-                      <AddIcon />
-                    </Fab>
-                    <Typography variant="h6" component="h2">
-                      {product.quantity}
-                    </Typography>
-                    <Fab
-                      size="small"
-                      color="secondary"
-                      aria-label="decrease"
-                      onClick={() => decreaseHandler(product)}
-                    >
-                      <RemoveIcon />
-                    </Fab>
-                    <Button
-                      variant="outlined"
-                      color="error"
-                      onClick={() => onDelete(product)}
-                    >
-                      Remove
-                    </Button>
-                  </CardActions>
-                </Card>
+                <CartItemCards
+                  quantity={product.quantity}
+                  price={product.price}
+                  title={product.title}
+                  category={product.category.name}
+                  image={product.images}
+                  product={product}
+                />
               ))
-            })
-              :
-              (
-                <div>Nothing here</div>
-              )
-            } */}
+            ) : (
+              <Typography>Cart is empty.</Typography>
+            )}
           </div>
         </CardContent>
         <CardActions>

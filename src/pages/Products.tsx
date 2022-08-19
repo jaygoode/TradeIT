@@ -44,16 +44,11 @@ const Products = () => {
   };
 
   const sortingSelect: void = useEffect(() => {
-    console.log(sorting);
     dispatch(fetchProducts({ offset: page, limit: perPage, sorting: sorting }));
   }, [sorting, perPage]);
 
   const addToCartHandler = (product: ProductsInCart) => {
-    console.log(cartItems);
-    console.log(product);
     let check = cartItems.includes(product, 0);
-    console.log(check);
-    console.log(cartItems);
     if (check) {
       dispatch(increaseProductAmount(product));
     } else dispatch(addToCart({ ...product, quantity: 1 }));

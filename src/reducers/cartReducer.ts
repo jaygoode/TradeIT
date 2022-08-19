@@ -17,7 +17,7 @@ const cartSlice = createSlice({
       state.products.push(action.payload);
       state.total += action.payload.price;
     },
-    increaseProductAmount: (state, action) => {
+    increaseProductAmount: (state, action: PayloadAction<Product>) => {
       state.products.map((product) => {
         if (product.id === action.payload.id) {
           product.quantity += 1;
@@ -25,7 +25,7 @@ const cartSlice = createSlice({
         }
       });
     },
-    decreaseProductAmount: (state, action) => {
+    decreaseProductAmount: (state, action: PayloadAction<Product>) => {
       state.products.map((product) => {
         if (product.id === action.payload.id && product.quantity > 0) {
           product.quantity -= 1;
@@ -33,7 +33,7 @@ const cartSlice = createSlice({
         }
       });
     },
-    deleteFromCart: (state, action) => {
+    deleteFromCart: (state, action: PayloadAction<Product>) => {
       state.products = state.products.filter(
         (product) => product.id !== action.payload.id
       );

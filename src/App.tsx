@@ -67,7 +67,7 @@ function App() {
           >
             <NavBar />
             <Routes>
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="products">
                 <Route path="" element={<Products />} />
                 <Route path=":productId" element={<Product />} />

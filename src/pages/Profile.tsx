@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../hooks/hooks";
 import { login } from "../reducers/userReducer";
 import { fetchUsers } from "../reducers/userReducer";
-import { LoginType, User } from "../types/user";
 
 import {
   IconButton,
@@ -28,27 +27,27 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
-  
+
   const loginHandler = () => {
     console.log(email + password);
     dispatch(login({ email, password }));
 
     const userList = () => {
       if (users) {
-       return users.userList.map((user) => (
+        return users.userList.map((user) => (
           <div key={user.id}>
             <img src={user.avatar} alt="user avatar"></img>
             <p>{user.name}</p>
             <p>{user.role}</p>
             <p>{user.email}</p>
           </div>
-        ))
+        ));
       }
-    }
+    };
   };
 
   return (
@@ -89,9 +88,7 @@ const Profile = () => {
 
           <Typography>Profile Page</Typography>
           <Card className="profile-card">
-              <CardContent className="profile-card">
-                
-            </CardContent>
+            <CardContent className="profile-card"></CardContent>
           </Card>
         </div>
       )}
