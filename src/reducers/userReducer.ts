@@ -11,7 +11,6 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
   try {
     const data = await fetch(`https://api.escuelajs.co/api/v1/users`);
     let result = await data.json();
-    console.log(result);
     return result;
   } catch (error: any) {
     console.log("could not fetch users");

@@ -18,10 +18,9 @@ import { ThemeProvider } from "@mui/private-theming";
 function App() {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productReducer);
-  useEffect(() => {
-    dispatch(fetchProducts({ offset: 0, limit: 10 }));
-    console.log();
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchProducts({ offset: 0, limit: 10 }));
+  // }, []);
   // const [classname, setClassname] = useState("App");
   const [mode, setMode] = useState<"dark" | "light">("light");
   const themecontext = {
@@ -67,7 +66,7 @@ function App() {
           >
             <NavBar />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="products">
                 <Route path="" element={<Products />} />
                 <Route path=":productId" element={<Product />} />
