@@ -41,19 +41,11 @@ const Profile = () => {
 
   const loginHandler = () => {
     navigate("/login");
+  };
 
-    const userList = () => {
-      if (users) {
-        return users.map((user) => (
-          <div key={user.id}>
-            <img src={user.avatar} alt="user avatar"></img>
-            <p>{user.name}</p>
-            <p>{user.role}</p>
-            <p>{user.email}</p>
-          </div>
-        ));
-      }
-    };
+  const logout = (): any => {
+    dispatch(logout());
+    // console.log();
   };
 
   return (
@@ -69,6 +61,7 @@ const Profile = () => {
           <div className="profile-page">
             <Card className="profile-card">
               <CardContent>
+                <Button onClick={logout}>Log out</Button>
                 <Typography>Profile Page</Typography>
                 <div key={currentUser.id}>
                   <img src={currentUser.avatar} alt="user avatar"></img>
@@ -81,8 +74,8 @@ const Profile = () => {
           </div>
         )}
         {currentUser &&
-          currentUser.role === "customer" &&
-          users.map((user) => {
+          currentUser.role === "admin" &&
+          users.map((user) => (
             <div className="profile-page">
               <Card className="profile-card">
                 <CardContent>
@@ -94,8 +87,8 @@ const Profile = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>;
-          })}
+            </div>
+          ))}
       </>
     </div>
   );

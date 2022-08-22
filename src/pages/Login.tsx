@@ -40,10 +40,10 @@ const Login = () => {
 
   return (
     <Container className="login__container">
-      <Card>
-        <div>
+      <Card className="form-container">
+        <div className="form-container">
           <h4>Sign In</h4>
-          <form>
+          <form onSubmit={checkUserExist}>
             <h2>Email address</h2>
             <input
               type="email"

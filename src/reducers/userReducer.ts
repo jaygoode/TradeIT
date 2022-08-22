@@ -37,7 +37,7 @@ export const login = createAsyncThunk(
       const data = await response.json();
       if (data.access_token) {
         console.log(data.access_token);
-        localStorage.setItem("userToken", JSON.stringify(data.access_token));
+        localStorage.setItem("token", JSON.stringify(data.access_token));
         const user = await axios.get(
           `https://api.escuelajs.co/api/v1/auth/profile`,
           {
@@ -47,7 +47,6 @@ export const login = createAsyncThunk(
             },
           }
         );
-        console.log(user.data);
         console.log(data.access_token);
         return user.data;
       }
@@ -109,9 +108,8 @@ const userSlice = createSlice({
   name: "userReducer",
   initialState: initialState,
   reducers: {
-    logout: (state, action) => {
-      state.currentUser = undefined;
-      localStorage.removeItem("token");
+    logout: (state, action: any) => {
+      console.log("test");
     },
   },
   extraReducers: (builder) => {
@@ -122,7 +120,6 @@ const userSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action: PayloadAction<User>) => {
         state.currentUser = action.payload;
-        console.log(state.currentUser);
         return state;
       })
       .addCase(loginByToken.fulfilled, (state, action: PayloadAction<User>) => {

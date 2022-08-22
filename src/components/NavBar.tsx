@@ -23,8 +23,11 @@ import { useContext } from "react";
 
 import LoginButton from "./LoginButton";
 import ThemeContext from "../theme/ThemeContext";
+import { useAppSelector, useAppDispatch } from "../hooks/hooks";
+import { logout } from "../reducers/userReducer";
 
 const NavBar = () => {
+  const dispatch = useAppDispatch();
   const navItems = ["home", "products", "cart", "profile", "login"];
 
   const theme = useTheme();
@@ -34,6 +37,11 @@ const NavBar = () => {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const logout = (): any => {
+    dispatch(logout());
+    console.log("logout");
   };
 
   return (
@@ -65,6 +73,7 @@ const NavBar = () => {
               </Button>
             ))}
           </Box>
+          <Button onClick={logout}>Log out</Button>
           <Button
             className="theme-btn"
             onClick={() => {
