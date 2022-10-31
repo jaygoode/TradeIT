@@ -14,7 +14,17 @@ const cartSlice = createSlice({
   initialState: initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ProductsInCart>) => {
-      state.products.push(action.payload);
+      console.log(action.payload.id);
+      const check = state.products.map((item) => {
+        if (item.id === action.payload.id) {
+          console.log("Asdasdfa");
+        }
+      });
+      console.log(check);
+      if (!check) {
+        console.log("check works");
+        state.products.push(action.payload);
+      }
       state.total += action.payload.price;
     },
     increaseProductAmount: (state, action: PayloadAction<Product>) => {

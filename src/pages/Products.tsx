@@ -24,7 +24,7 @@ import {
 
 const Products = () => {
   const products = useAppSelector((state) => state.productReducer.productList);
-  const cartItems = useAppSelector((state) => state.cartReducer.products);
+  const cartItems = useAppSelector((state) => state.cartReducer);
   const [perPage, setPerPage] = useState(20);
   const [page, setPage] = useState(0);
   const [sorting, setSorting] = useState("price");
@@ -48,10 +48,12 @@ const Products = () => {
   }, [sorting, perPage]);
 
   const addToCartHandler = (product: ProductsInCart) => {
-    let check = cartItems.includes(product, 0);
-    if (check) {
-      dispatch(increaseProductAmount(product));
-    } else dispatch(addToCart({ ...product, quantity: 1 }));
+    if (cartItems.products.length > 0) {
+      console.log(cartItems.products[0].id);
+    }
+
+    dispatch(increaseProductAmount(product));
+    dispatch(addToCart({ ...product, quantity: 1 }));
   };
 
   return (
